@@ -2,6 +2,6 @@
 <h2>Exercise-Authors</h2>
 <author></author>
 <h2>Exercise-Favorite</h2>
-<favorite></favorite>
+<favorite [is-favorite] = "post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
 <h2>Exercise-Title Case</h2>
 <title-case></title-case>
