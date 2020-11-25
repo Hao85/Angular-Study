@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'study';
+  // make the favorite component to re-usable components
   post = {
     title: "Title",
     isFavorite: true
@@ -16,4 +17,12 @@ export class AppComponent {
   onFavoriteChange(eventArgs:FavoriteChangeEventArgs) {
     console.log("isFavorite changed to : ", eventArgs);
   }
+
+  // exercise-Like Component
+  tweet = {
+    body: "Here is the body of a tweet...",
+    isLiked: false,
+    likeCount: 0
+  }
+
 }

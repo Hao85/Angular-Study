@@ -5,3 +5,7 @@
 <favorite [is-favorite] = "post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
 <h2>Exercise-Title Case</h2>
 <title-case></title-case>
+<h2>Exercise-LikeComponet</h2>
+<like [isActive]="tweet.isLike"
+    [likesCount]="tweet.likeCount">
+</like>
