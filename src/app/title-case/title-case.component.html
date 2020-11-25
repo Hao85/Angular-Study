@@ -1,2 +1,7 @@
+<h4>Solution One</h4>
 <input type="text" #inputText (keyup)="onKeyUp(inputText.value)" >
 <br>{{outputText}}
+
+<h4>Solution Two: two-way binding and pipes</h4>
+<input type="text" [(ngModel)]="title" >
+<br>{{title | titleCase}}
