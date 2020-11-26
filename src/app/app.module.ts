@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { TitleCasePipe } from './title-case.pipe';
 import { LikeComponent } from './like/like.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InputFormatDirective } from './input-format.directive';
     TitleCaseComponent,
     TitleCasePipe,
     LikeComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
