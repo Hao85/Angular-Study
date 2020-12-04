@@ -18,6 +18,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TopicsComponent } from './topics/topics.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
+import { BrowserAnimationsModule}  from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { PostsComponent } from './posts/posts.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthorService,
