@@ -1,3 +1,5 @@
+import { PostService } from './../services/post.service';
+import { HttpClientModule } from '@angular/common/http'
 import { AuthorService } from './author.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +17,7 @@ import { CourseFormComponent } from './course-form/course-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TopicsComponent } from './topics/topics.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +32,18 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     CourseFormComponent,
     SignupFormComponent,
     TopicsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    AuthorService
+    AuthorService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
