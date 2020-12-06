@@ -1,5 +1,10 @@
+import { BadInputError } from '../app/common/bad-input-error';
+import { NotFoundError } from './../app/common/not-found-error';
+import { AppError } from './../app/common/app-error';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class PostService {
@@ -12,7 +17,14 @@ export class PostService {
   }
 
   createPost(post) {
-    return this.http.post(this.url, JSON.stringify(post));
+    return this.http.post(this.url, JSON.stringify(post))
+      .pipe(
+        catchError((error: Response) => {
+          if (error.status === 404) 
+            return throwError(new BadInputError(error.json()));
+          return throwError(new AppError(error.json()));
+        })
+      );
   }
 
   updatePost(post) {
@@ -20,7 +32,15 @@ export class PostService {
   }
 
   deletePost(id) {
-    return this.http.delete(this.url + "/" + id);
+    return this.http.delete(this.url + "/" + id)
+      .pipe(
+        catchError((error: Response) => {
+          if (error.status === 404)
+            return throwError(new NotFoundError)
+
+          return throwError(new AppError(error.json()));
+        })
+      );
   }
 
 }
