@@ -1,8 +1,9 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './../services/post.service';
 import { HttpClientModule } from '@angular/common/http'
 import { AuthorService } from './author.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AuthorComponent } from './author/author.component';
@@ -47,7 +48,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     AuthorService,
-    PostService
+    PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

@@ -17,27 +17,17 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAllPosts()
+    this.service.getAll()
       .subscribe(
         (response: any[]) => {
           this.posts = response
-        },
-        (error)=> {
-          this.toastr.error("An unexpected error occurred.");
-          /*
-          for real application, 
-          please put the error into your logAPI
-          3rd libray: log4js
-          */
-          console.log(error);
-        }
-      );
+        });
   }
 
   createPost(input: HTMLInputElement) {
     let post = {title: input.value};
     input.value = "";
-    this.service.createPost(post)
+    this.service.create(post)
       .subscribe(
         (response) => {
           post["id"] = response["id"]; 
@@ -51,41 +41,22 @@ export class PostsComponent implements OnInit {
             like below: 
             */
             // this.form.setErrors(error.orignalError);
-          } else {
-            this.toastr.error("An unexpected error occurred.");
-            /*
-            for real application, 
-            please put the error into your logAPI
-            3rd libray: log4js
-            */
-            console.log(error);
-          }
+          } else throw error;
         }
       );
   }
 
   updatePost(post) {
     post["title"] = "UPDATE!!!";
-    this.service.updatePost(post)
+    this.service.update(post)
       .subscribe(
         (response) => {
           console.log(response)
-        },
-        (error) => {
-          this.toastr.error("An unexpected error occurred.");
-          /*
-          for real application, 
-          please put the error into your logAPI
-          3rd libray: log4js
-          */
-          console.log(error);
-        }
-      ); 
-    
+        });     
   } 
 
   deletePost(post) {
-    this.service.deletePost(post.id +"/200")
+    this.service.delete(post.id)
       .subscribe(
         (response) => {
           let index = this.posts.indexOf(post);
@@ -94,15 +65,7 @@ export class PostsComponent implements OnInit {
         (error: AppError) => {
           if (error instanceof NotFoundError) {
             this.toastr.error("This post has been already deleted.")
-          } else {
-            this.toastr.error("An unexpected error occurred.");
-            /*
-            for real application, 
-            please put the error into your logAPI
-            3rd libray: log4js
-            */
-            console.log(error);
-          }
+          } else throw error;
         }
       )
   }
