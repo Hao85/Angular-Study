@@ -4,7 +4,7 @@ import { AppError } from './../app/common/app-error';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 
 @Injectable()
 export class DataService {
@@ -13,22 +13,34 @@ export class DataService {
 
     getAll() {
         return this.http.get(this.url)
-            .pipe(catchError(this.errorHandler));
+            .pipe(
+                map(response => response),
+                catchError(this.errorHandler)
+            );
     }
 
     create(resource) {
         return this.http.post(this.url, JSON.stringify(resource))
-            .pipe(catchError(this.errorHandler));
+            .pipe(
+                map(response => response),
+                catchError(this.errorHandler)
+            );
     }
 
     update(resource) {
         return this.http.put(this.url + "/" + resource.id, JSON.stringify(resource))
-            .pipe(catchError(this.errorHandler));
+            .pipe(
+                map(response => response),
+                catchError(this.errorHandler)
+            );
     }
 
     delete(id) {
         return this.http.delete(this.url + "/" + id)
-            .pipe(catchError(this.errorHandler));
+            .pipe(
+                map(respones => respones),
+                catchError(this.errorHandler)
+            );
     }
 
 
@@ -37,9 +49,9 @@ export class DataService {
             return throwError(new NotFoundError);
 
         if (error.status === 404) 
-            return throwError(new BadInputError(error.json()));
+            return throwError(new BadInputError(error));
 
-        return throwError(new AppError(error.json()));
+        return throwError(new AppError(error));
     }
 
 }
