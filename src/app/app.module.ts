@@ -1,3 +1,4 @@
+import { GithubFollowersService } from './../services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './../services/post.service';
 import { HttpClientModule } from '@angular/common/http'
@@ -21,6 +22,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule}  from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     SignupFormComponent,
     TopicsComponent,
     ChangePasswordComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     AuthorService,
     PostService,
+    GithubFollowersService,
     {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
