@@ -23,6 +23,11 @@ import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule}  from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -39,7 +44,11 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     TopicsComponent,
     ChangePasswordComponent,
     PostsComponent,
-    GithubFollowersComponent
+    GithubFollowersComponent,
+    HomeComponent,
+    NotFoundComponent,
+    NavbarComponent,
+    GithubProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,7 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [
     AuthorService,
