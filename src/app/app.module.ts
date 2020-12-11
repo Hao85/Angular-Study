@@ -57,6 +57,28 @@ import { RouterModule } from "@angular/router";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    RouterModule.forRoot([
+      {
+        path: "", 
+        component: HomeComponent
+      },
+      {
+        path: "followers/:id/:username", 
+        component: GithubProfileComponent
+      },
+      {
+        path: "followers", 
+        component: GithubFollowersComponent
+      },
+      {
+        path: "posts", 
+        component: PostsComponent
+      },
+      {
+        path: "**", 
+        component: NotFoundComponent
+      },
+    ])
   ],
   providers: [
     AuthorService,
