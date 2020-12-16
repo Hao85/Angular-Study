@@ -2,7 +2,7 @@ import { BadInputError } from '../common/bad-input-error';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
 import { ToastrService } from 'ngx-toastr';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../services/post.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { GithubFollowersService } from 'src/services/github-followers.service';
+import { GithubFollowersService } from '../services/github-followers.service';
 import { combineLatest } from "rxjs";
 import { switchMap } from "rxjs/operators";
 

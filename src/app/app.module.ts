@@ -1,8 +1,8 @@
-import { GithubFollowersService } from './../services/github-followers.service';
+import { GithubFollowersService } from './services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-handler';
-import { PostService } from './../services/post.service';
+import { PostService } from './services/post.service';
 import { HttpClientModule } from '@angular/common/http'
-import { AuthorService } from './author.service';
+import { AuthorService } from './services/author.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 
