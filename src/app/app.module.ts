@@ -1,3 +1,5 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { OrderService } from './services/order.service';
 import { GithubFollowersService } from './services/github-followers.service';
@@ -75,14 +77,15 @@ import { AuthService } from './services/auth.service';
       },
       {
         path: "admin",
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: "login",
         component: LoginComponent
       },
       {
-        path: "no-acess",
+        path: "no-access",
         component: NoAccessComponent
       }
     ])
@@ -116,6 +119,8 @@ import { AuthService } from './services/auth.service';
     {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
     AuthService,
+    AuthGuard,
+    AdminAuthGuard,
     // for creating a  mock back-end. you don't need these in a real app
     fakeBackendProvider,
   ],
